@@ -3,7 +3,7 @@ import express from 'express';
 import usersRouters from './src/routers/user.route.js';
 import loginRouters from './src/routers/auth.route.js';
 import newsRouters from './src/routers/news.route.js';
-import swaggerRouters from './src/routers/swagger.route.js';
+import swaggerRouters from './src/routers/swagger.route.cjs';
 
 import conexao from './src/database/db.js';
 import dotenv from 'dotenv';
