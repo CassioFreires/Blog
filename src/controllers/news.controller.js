@@ -49,6 +49,8 @@ const getAll = async (req, res) => {
 
 
         const news = await newsService.findAllService(offset, limit);
+
+
         const next = offset + limit;
         const total = await newsService.countNewsService();
         const currentUrl = req.baseUrl;
@@ -240,17 +242,21 @@ const update = async (req, res) => {
 }
 
 const exclude = async (req, res) => {
-    const {id} = req.params;
+    try{
+        const {id} = req.params;
 
-    const news = await newsService.findByIdService(id);
-
-    if(news.user._id.toString() != req.userId.toString()) {
-        return res.status(400).send({message: "You didn't delete this news"})
+        const news = await newsService.findByIdService(id);
+    
+        if(news.user._id.toString() != req.userId.toString()) {
+            return res.status(400).send({message: "You didn't delete this news"})
+        }
+    
+        await newsService.excludeService(id)
+    
+        return res.send({message: 'News delete successfully'})
+    }catch(e) {
+        res.status(500).send(e)
     }
-
-    await newsService.excludeService(id)
-
-    return res.send({message: 'News delete successfully'})
 }
 
 const likeNews = async (req, res) => {

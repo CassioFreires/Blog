@@ -1,4 +1,6 @@
 import express from 'express';
+import cors from 'cors';
+
 
 import usersRouters from './src/routers/user.route.js';
 import loginRouters from './src/routers/auth.route.js';
@@ -7,6 +9,8 @@ import swaggerRouters from './src/routers/swagger.route.cjs';
 
 import conexao from './src/database/db.js';
 import dotenv from 'dotenv';
+
+
 const app = express();
 const port =  process.env.PORT || 8081;
 
@@ -17,6 +21,7 @@ dotenv.config();
 // config express para compreender documentos json
 app.use(express.json());
 
+app.use(cors())
 
 // config rotas
 app.use('/user', usersRouters);
