@@ -23,11 +23,4 @@ newsRouters.patch('/comment/delete/:idNews/:idComment', authMidlewares, Controll
 
 
 
-
-
-
-
-
-
-
 export default newsRouters;

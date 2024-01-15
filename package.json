@@ -5,8 +5,8 @@
   "description": "API for SPA to World news",
   "main": "index.js",
   "scripts": {
-    "start": "node index",
-    "dev": "nodemon index.js",
+    "start": "node app.js",
+    "dev": "nodemon app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
